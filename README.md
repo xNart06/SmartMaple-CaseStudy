@@ -2,7 +2,7 @@
 
 ## Overview
 Develop a scraper to extract all campground locations across the United States from The Dyrt https://thedyrt.com/search by leveraging their map interface which exposes latitude/longitude data through API requests when the mouse moves. You're free to use any library you want (requests, httpx, selenium, playwright)
-For questions please connect us via email at info@smart-maple.com
+For questions please connect us via email at 
 
 **Hint:** Look for a search endpoint in the network tab!
 
