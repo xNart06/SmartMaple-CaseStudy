@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: case_study
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d case_study"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    
+
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DB_URL=postgresql://user:password@postgres:5432/case_study
+      - PYTHONPATH=/app
+    volumes:
+      - .:/app
+    tty: true
+    stdin_open: true
+    command: ["python", "-u", "src/main.py"]
+
+volumes:
+  postgres_data:
