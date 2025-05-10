@@ -1,4 +1,4 @@
-# Web-Scrape Case Study
+# Web-Scrape Case Study (My First Docker Project)
 
 ## Overview
 Develop a scraper to extract all campground locations across the United States from The Dyrt https://thedyrt.com/search by leveraging their map interface which exposes latitude/longitude data through API requests when the mouse moves. You're free to use any library you want (requests, httpx, selenium, playwright)
